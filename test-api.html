@@ -5,29 +5,9 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/MarkerCluster.css">
-        <link rel="stylesheet" href="css/Leaflet.Photo.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <!--
-        <link rel="stylesheet" href="../css/accueil.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/map.css">
-        -->
         <!-- FONT AWESOME CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <script src="js/reqwest.min.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/vendor/bootstrap.js"></script>
-        <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/Leaflet.Photo.js"></script>
-        <script src="js/anime.js"></script>
 
         <style>
             ul.listeInfo {
@@ -86,22 +66,7 @@ section {
             <button class="up">UP</button>
         </main>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="js/anime.js"></script>
         <script>
-var scrollPercentRounded = 0;
-var scrollTop = $(window).scrollTop();
-
-var calculerScroll = function () {
-	scrollTop = $(window).scrollTop();
-	var docHeight = $(document).height();
-	var winHeight = $(window).height();
-	var scrollPercent = (scrollTop) / (docHeight - winHeight);
-	scrollPercentRounded = Math.round(scrollPercent*100);
-    //console.log(scrollPercentRounded);
-    
-    $('.up').html(scrollPercentRounded);
-    
-}
 
 var appelAjax = function (urlApiAjax, callbackJson)
 {
@@ -116,58 +81,8 @@ var appelAjax = function (urlApiAjax, callbackJson)
             .then(callbackJson)
 };
 
-$(function(){
-    $(".up").on("click", function(){
-        //console.log(this);
-        anime({
-            targets: this,
-            width: "50vw"
-        });
-
-        var count = $("section").length;
-        var top = 0;
-        const navHeight = 0;
-        const scrollCoords = {
-            y:scrollTop         // START POSITION
-            //y: window.pageYOffset
-        }
-        
-        var targetPct = (parseInt(scrollPercentRounded/25) -1) * 25;
-    	var docHeight = $(document).height();
-        var targetScrollY = targetPct*docHeight/100;
-        
-        console.log(scrollPercentRounded);
-        console.log(targetPct);
-        console.log(docHeight);
-        console.log(targetScrollY);
-        
-        anime({
-            targets: scrollCoords,
-//              y: ((top + window.pageYOffset) - navHeight),
-                y: targetScrollY,        // TARGET POSITION
-                duration: 350,
-                easing: 'easeInOutCubic',
-                update: () => window.scroll(0, scrollCoords.y)
-        });        
-    });
-    
-    $(window).on("scroll", function(e){
-        calculerScroll();        
-    });
-
-    calculerScroll();        
-    
-});
-
         </script>
         <script>
-var map = L.map('mapHome').setView([43.3, 5.4], 13);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 18,
-    id: 'mapbox.streets'
-}).addTo(map);
-
 hashtag = "code4marseille";
 
 var UrlApi = "https://myprovence.code4marseille.fr/api/instas?tags="+hashtag;
